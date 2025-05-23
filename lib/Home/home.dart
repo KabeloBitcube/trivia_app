@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trivia_app/Questions/questions.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -89,6 +90,14 @@ class HomePage extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 31, 30, 30).withValues(alpha: 0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), 
+                        ),
+                      ],
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -118,19 +127,24 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 240,
+                    top: 235,
                     left: 130,
-                    child: GestureDetector(
-                      onTap: () {
-                        
-                      },
-                      child: Container(
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          color: Colors.deepOrange,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
+                    child: Container(
+                      height: 80,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.deepOrange,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Questions(),
+                            ),
+                          );
+                        },
                         child: Image.asset('assets/images/Play.png'),
                       ),
                     ),
@@ -138,7 +152,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 20),
           ],
         ),
       ),
