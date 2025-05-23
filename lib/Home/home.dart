@@ -22,34 +22,46 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset('assets/images/Object2.png', width: 100),
-                      SizedBox(width: 200),
+                      SizedBox(width: 210),
                       Image.asset('assets/images/Object4.png', width: 100),
                     ],
                   ),
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 15),
                         child: Stack(
                           children: [
                             Image.asset(
                               'assets/images/Object8.png',
                               width: 100,
                             ),
-                            Image.asset('assets/images/Object5.png', width: 100, height: 100,),
+                            Image.asset(
+                              'assets/images/Object5.png',
+                              width: 100,
+                              height: 100,
+                            ),
                           ],
                         ),
                       ),
                       Stack(
                         children: [
                           Image.asset('assets/images/Object10.png', width: 180),
-                          Image.asset('assets/images/Object7.png', width: 180, height: 190,),
+                          Image.asset(
+                            'assets/images/Object7.png',
+                            width: 180,
+                            height: 190,
+                          ),
                         ],
                       ),
                       Stack(
                         children: [
                           Image.asset('assets/images/Object9.png', width: 100),
-                          Image.asset('assets/images/Object6.png', width: 100, height: 100,),
+                          Image.asset(
+                            'assets/images/Object6.png',
+                            width: 100,
+                            height: 100,
+                          ),
                         ],
                       ),
                     ],
@@ -65,6 +77,68 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Press play to start',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 56, 1, 66),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 23,
+                          ),
+                        ),
+                        const Text(
+                          'QUIZMASTER',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 56, 1, 66),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 23,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        const Text(
+                          'Answer questions correctly to earn points',
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    top: 240,
+                    left: 130,
+                    child: GestureDetector(
+                      onTap: () {
+                        
+                      },
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.deepOrange,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Image.asset('assets/images/Play.png'),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20,),
           ],
         ),
       ),
