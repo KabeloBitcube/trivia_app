@@ -36,20 +36,20 @@ class HomePage extends StatelessWidget {
                               'assets/images/Object8.png',
                               width: 100,
                             ),
-                            Image.asset('assets/images/Object5.png', width: 70),
+                            Image.asset('assets/images/Object5.png', width: 100, height: 100,),
                           ],
                         ),
                       ),
                       Stack(
                         children: [
                           Image.asset('assets/images/Object10.png', width: 180),
-                          Image.asset('assets/images/Object7.png', width: 125,),
+                          Image.asset('assets/images/Object7.png', width: 180, height: 190,),
                         ],
                       ),
                       Stack(
                         children: [
                           Image.asset('assets/images/Object9.png', width: 100),
-                          Image.asset('assets/images/Object6.png', width: 80),
+                          Image.asset('assets/images/Object6.png', width: 100, height: 100,),
                         ],
                       ),
                     ],
