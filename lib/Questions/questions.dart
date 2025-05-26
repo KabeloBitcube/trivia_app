@@ -128,69 +128,221 @@ class _QuestionsState extends State<Questions> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
-      body: Container(
+    //API intergration
+    if (questions.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.deepPurpleAccent,
+          child: Center(child: CircularProgressIndicator(color: Colors.white)),
+        ),
+      );
+    }
+
+    Map<String, dynamic> currentQuestion = questions[currentIndex];
+    String questionText = currentQuestion['question'];
+    List<String> options = currentQuestion['options'];
+
+    List<Widget> columnChildren = [
+      Container(
         height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.deepPurpleAccent,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Question 6',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 50),
-            Stack(
-              children: [
-                Container(
-                  height: 10,
-                  width: 350,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey,
-                  ),
+          width: MediaQuery.of(context).size.width,
+          color: Colors.deepPurpleAccent,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Question ${currentIndex + 1} of ${questions.length}',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
-                Positioned(
-                  child: Container(
+              ),
+              SizedBox(height: 50),
+              Stack(
+                children: [
+                  Container(
                     height: 10,
-                    width: 250,
+                    width: 350,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.deepOrange,
+                      color: Colors.grey,
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 50),
-            QuizContainer(quiz: quiz),
-            const SizedBox(height: 50),
-            // ListView.builder(
-            //   itemCount: options.length,
-            //   itemBuilder: (context, index) {
-            //     return Column(
-            //       children: [
-            //         QuizButton(option: options[index])
-            //       ],
-            //     );
-            //   },
-            // )
-            QuizButton(option: options[0]),
-            SizedBox(height: 10),
-            QuizButton(option: options[1]),
-            SizedBox(height: 10),
-            QuizButton(option: options[2]),
-            SizedBox(height: 10),
-            QuizButton(option: options[3]),
-            SizedBox(height: 10),
-          ],
+                  Positioned(
+                    child: Container(
+                      height: 10,
+                      width: 250,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.deepOrange,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 50),
+              QuizContainer(quiz: questionText),
+              const SizedBox(height: 50),
+            ],
+          ),
+      ),
+
+
+
+      // Scaffold(
+      //   appBar: AppBar(),
+      //   body: Container(
+      //     height: MediaQuery.of(context).size.height,
+      //     width: MediaQuery.of(context).size.width,
+      //     child: Column(
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       children: [
+      //         Text(
+      //           'Question $currentIndex of ${questions.length}',
+      //           style: TextStyle(
+      //             color: Colors.white,
+      //             fontWeight: FontWeight.bold,
+      //           ),
+      //         ),
+      //         SizedBox(height: 50),
+      //         Stack(
+      //           children: [
+      //             Container(
+      //               height: 10,
+      //               width: 350,
+      //               decoration: BoxDecoration(
+      //                 borderRadius: BorderRadius.circular(10),
+      //                 color: Colors.grey,
+      //               ),
+      //             ),
+      //             Positioned(
+      //               child: Container(
+      //                 height: 10,
+      //                 width: 250,
+      //                 decoration: BoxDecoration(
+      //                   borderRadius: BorderRadius.circular(10),
+      //                   color: Colors.deepOrange,
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //         QuizContainer(quiz: questionText),
+      //         const SizedBox(height: 50),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+    ];
+
+    List<Widget> answerWidgets = [];
+
+    for (var answer in options) {
+      answerWidgets.add(
+        GestureDetector(
+        onTap: () {
+          selectAnswer(answer);
+        },
+        child: Container(
+          height: 50,
+          width: 350,
+          decoration: BoxDecoration(
+            color: getAnswerColor(answer),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.white),
+          ),
+          child: Center(
+            child: Text(answer, style: TextStyle(color: Colors.white)),
+          ),
+        ),
+      ),
+      );
+    }
+
+    columnChildren.addAll(answerWidgets);
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: columnChildren
         ),
       ),
     );
+
+    //Questions page layout
+    // return Scaffold(
+    //   appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
+    //   body: Container(
+    //     height: MediaQuery.of(context).size.height,
+    //     width: MediaQuery.of(context).size.width,
+    //     color: Colors.deepPurpleAccent,
+    //     child:
+        
+        
+        
+    //     Column(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: [
+    //         const Text(
+    //           'Question 6',
+    //           style: TextStyle(
+    //             color: Colors.white,
+    //             fontWeight: FontWeight.bold,
+    //           ),
+    //         ),
+    //         SizedBox(height: 50),
+    //         Stack(
+    //           children: [
+    //             Container(
+    //               height: 10,
+    //               width: 350,
+    //               decoration: BoxDecoration(
+    //                 borderRadius: BorderRadius.circular(10),
+    //                 color: Colors.grey,
+    //               ),
+    //             ),
+    //             Positioned(
+    //               child: Container(
+    //                 height: 10,
+    //                 width: 250,
+    //                 decoration: BoxDecoration(
+    //                   borderRadius: BorderRadius.circular(10),
+    //                   color: Colors.deepOrange,
+    //                 ),
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //         SizedBox(height: 50),
+    //         QuizContainer(quiz: quiz),
+    //         const SizedBox(height: 50),
+    //         ListView.builder(
+    //           itemCount: options.length,
+    //           itemBuilder: (context, index) {
+    //             return Column(
+    //               children: [
+    //                 QuizButton(option: options[index])
+    //               ],
+    //             );
+    //           },
+    //         )
+    //         QuizButton(option: options[0]),
+    //         SizedBox(height: 10),
+    //         QuizButton(option: options[1]),
+    //         SizedBox(height: 10),
+    //         QuizButton(option: options[2]),
+    //         SizedBox(height: 10),
+    //         QuizButton(option: options[3]),
+    //         SizedBox(height: 10),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class QuizButton extends StatelessWidget {
   final String option;
-  const QuizButton({super.key, required this.option});
+  final VoidCallback selectAnswer;
+  final Color color;
+  const QuizButton({super.key, required this.option, required this.selectAnswer, required this.color});
 
   @override
   Widget build(BuildContext context) {
