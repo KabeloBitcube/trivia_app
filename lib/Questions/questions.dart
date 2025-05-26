@@ -37,7 +37,7 @@ class _QuestionsState extends State<Questions> {
   Future<void> fetchQuiz() async {
     final response = await http.get(
       Uri.parse(
-        'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy',
+        'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple',
       ),
       headers: {'Content-Type': 'application/json'},
     );
