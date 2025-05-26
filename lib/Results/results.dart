@@ -72,10 +72,10 @@ class ResultsScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 35,
-                  left: 35,
+                  top: 25,
+                  left: 25,
                   child: SizedBox(
-                    child: Icon(Icons.done, size: 30, color: Colors.white),
+                    child: Icon(Icons.done, size: 50, color: Colors.white),
                   ),
                 ),
               ],
@@ -83,7 +83,14 @@ class ResultsScreen extends StatelessWidget {
             const SizedBox(height: 50),
             stars(score),
             const SizedBox(height: 50),
-            Text('Score: $score / $totalScore'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('You Earned', style: TextStyle(fontSize: 20, color: Colors.white),),
+                const SizedBox(width: 5,),
+                Text('${score}0 pts', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),),
+              ],
+            ),
             const SizedBox(height: 150),
             QuizButton(text: 'Play Again'),
           ],
