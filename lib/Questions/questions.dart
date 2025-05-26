@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:html_unescape/html_unescape_small.dart';
 import 'package:trivia_app/Components/quizcontainer.dart';
 import 'package:http/http.dart' as http;
+import 'package:trivia_app/Results/results.dart';
 
 class Questions extends StatefulWidget {
   Questions({super.key});
@@ -121,6 +122,7 @@ class _QuestionsState extends State<Questions> {
       });
     } else {
       //Navigate to final results
+      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ResultsScreen()));
     }
   }
 
@@ -228,7 +230,7 @@ class _QuestionsState extends State<Questions> {
       ),
     ];
 
-    //columnChildren.addAll(answerWidgets);
+
 
     return Scaffold(
       appBar: AppBar(
