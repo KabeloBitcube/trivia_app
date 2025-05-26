@@ -14,11 +14,6 @@ class Questions extends StatefulWidget {
 }
 
 class _QuestionsState extends State<Questions> {
-  //For testing layout
-  final String quiz =
-      "When Gmail first launched, how much storage did it provide for your email?";
-
-  final List<String> options = ['512GB', '10GB', '5GB', 'Unlimited'];
 
   //API integration
   List<Map<String, dynamic>> questions = [];
