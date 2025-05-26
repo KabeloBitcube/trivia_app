@@ -22,7 +22,7 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             resultMessage(score),
-            const SizedBox(height: 20,),
+            const SizedBox(height: 20),
             Stack(
               children: [
                 Container(
@@ -32,18 +32,18 @@ class ResultsScreen extends StatelessWidget {
                     color: Colors.deepOrange,
                     borderRadius: BorderRadius.circular(100),
                     boxShadow: [
-                        BoxShadow(
-                          color: const Color.fromARGB(
-                            255,
-                            24,
-                            24,
-                            24,
-                          ).withValues(alpha: 0.5),
-                          spreadRadius: 3,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
+                      BoxShadow(
+                        color: const Color.fromARGB(
+                          255,
+                          24,
+                          24,
+                          24,
+                        ).withValues(alpha: 0.5),
+                        spreadRadius: 3,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                   ),
                 ),
                 Positioned(
@@ -80,6 +80,8 @@ class ResultsScreen extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 50),
+            stars(score),
             const SizedBox(height: 50),
             Text('Score: $score / $totalScore'),
             const SizedBox(height: 150),
@@ -118,6 +120,61 @@ Widget resultMessage(int score) {
         fontSize: 25,
         color: Colors.white,
       ),
+    );
+  }
+}
+
+Widget stars(int score) {
+  if (score <= 4) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(Icons.star, color: Colors.yellow,),
+        const SizedBox(width: 10),
+        Icon(Icons.star, size: 50),
+        const SizedBox(width: 10),
+        Icon(Icons.star),
+        const SizedBox(width: 10),
+      ],
+    );
+  }
+  else if (score <= 8) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(Icons.star, color: Colors.yellow,),
+        const SizedBox(width: 10),
+        Icon(Icons.star, size: 50, color: Colors.yellow,),
+        const SizedBox(width: 10),
+        Icon(Icons.star),
+        const SizedBox(width: 10),
+      ],
+    );
+  }
+  else if (score == 10) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(Icons.star, color: Colors.yellow,),
+        const SizedBox(width: 10),
+        Icon(Icons.star, size: 50, color: Colors.yellow,),
+        const SizedBox(width: 10),
+        Icon(Icons.star, color: Colors.yellow,),
+        const SizedBox(width: 10),
+      ],
+    );
+  }
+  else{
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(Icons.star,),
+        const SizedBox(width: 10),
+        Icon(Icons.star, size: 50),
+        const SizedBox(width: 10),
+        Icon(Icons.star),
+        const SizedBox(width: 10),
+      ],
     );
   }
 }
