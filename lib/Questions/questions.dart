@@ -120,8 +120,7 @@ class _QuestionsState extends State<Questions> {
         selectedAnswer = null;
         showNext = false;
       });
-    } 
-    else {
+    } else {
       //Navigate to final results
       Navigator.push(
         context,
@@ -169,6 +168,19 @@ class _QuestionsState extends State<Questions> {
                 color: getAnswerColor(answer),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.white),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(
+                      255,
+                      24,
+                      24,
+                      24,
+                    ).withValues(alpha: 0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
               ),
               child: Center(
                 child: Text(answer, style: TextStyle(color: Colors.white)),
@@ -334,7 +346,7 @@ Widget progressBar(int index) {
       ),
     );
   }
-  
+
   return Container(
     height: 10,
     width: 0,

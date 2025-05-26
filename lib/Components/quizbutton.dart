@@ -21,6 +21,14 @@ class QuizButton extends StatelessWidget {
           color: Colors.deepOrange,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.white),
+          boxShadow: [
+            BoxShadow(
+              color: const Color.fromARGB(255, 24, 24, 24).withValues(alpha: 0.5),
+              spreadRadius: 3,
+              blurRadius: 7,
+              offset: Offset(0, 3), 
+            ),
+          ],
         ),
         child: Center(
           child: Text(text, style: TextStyle(color: Colors.white)),
