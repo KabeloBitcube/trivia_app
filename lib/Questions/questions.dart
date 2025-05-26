@@ -122,7 +122,13 @@ class _QuestionsState extends State<Questions> {
       });
     } else {
       //Navigate to final results
-      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ResultsScreen()));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) =>
+              ResultsScreen(score: score, totalScore: questions.length),
+        ),
+      );
     }
   }
 
@@ -150,97 +156,87 @@ class _QuestionsState extends State<Questions> {
     for (var answer in options) {
       answerWidgets.add(
         GestureDetector(
-        onTap: () {
-          selectAnswer(answer);
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            height: 50,
-            width: 350,
-            decoration: BoxDecoration(
-              color: getAnswerColor(answer),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.white),
-            ),
-            child: Center(
-              child: Text(answer, style: TextStyle(color: Colors.white)),
+          onTap: () {
+            selectAnswer(answer);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 50,
+              width: 350,
+              decoration: BoxDecoration(
+                color: getAnswerColor(answer),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.white),
+              ),
+              child: Center(
+                child: Text(answer, style: TextStyle(color: Colors.white)),
+              ),
             ),
           ),
         ),
-      ),
       );
     }
 
     List<Widget> columnChildren = [
       Container(
         height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.deepPurpleAccent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Question ${currentIndex + 1} of ${questions.length}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+        width: MediaQuery.of(context).size.width,
+        color: Colors.deepPurpleAccent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Question ${currentIndex + 1} of ${questions.length}',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
-              SizedBox(height: 50),
-              Stack(
-                children: [
-                  Container(
+            ),
+            SizedBox(height: 50),
+            Stack(
+              children: [
+                Container(
+                  height: 10,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey,
+                  ),
+                ),
+                Positioned(
+                  child: Container(
                     height: 10,
-                    width: 350,
+                    width: 250,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey,
+                      color: Colors.deepOrange,
                     ),
                   ),
-                  Positioned(
-                    child: Container(
-                      height: 10,
-                      width: 250,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.deepOrange,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 50),
-              QuizContainer(quiz: questionText),
-              const SizedBox(height: 50),
-              Column(
-                children: answerWidgets
-              ),
-              const SizedBox(height: 50),
-              ElevatedButton(
-                onPressed: () {
-                  nextQuestion();
-                }, 
-                child: Text(
-                  currentIndex >= questions.length - 1 ? 'Finish' : 'Next'
-                )
                 ),
-            ],
-          ),
+              ],
+            ),
+            const SizedBox(height: 50),
+            QuizContainer(quiz: questionText),
+            const SizedBox(height: 50),
+            Column(children: answerWidgets),
+            const SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                nextQuestion();
+              },
+              child: Text(
+                currentIndex >= questions.length - 1 ? 'Finish' : 'Next',
+              ),
+            ),
+          ],
+        ),
       ),
     ];
 
-
-
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: columnChildren
-        ),
-      ),
+      appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
+      body: SingleChildScrollView(child: Column(children: columnChildren)),
     );
   }
 }
