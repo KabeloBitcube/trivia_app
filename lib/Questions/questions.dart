@@ -197,7 +197,7 @@ class _QuestionsState extends State<Questions> {
         width: MediaQuery.of(context).size.width,
         color: Colors.deepPurpleAccent,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               'Question ${currentIndex + 1} of ${questions.length}',
