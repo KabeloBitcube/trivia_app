@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:trivia_app/Results/results.dart';
 
 class Questions extends StatefulWidget {
-  Questions({super.key});
+  const Questions({super.key});
 
   @override
   State<Questions> createState() => _QuestionsState();
