@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+//Re-usable quiz container to display questions from API
 class QuizContainer extends StatelessWidget {
   final String quiz;
   const QuizContainer({super.key, required this.quiz});

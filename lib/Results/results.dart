@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:trivia_app/Components/quizbutton.dart';
 
 class ResultsScreen extends StatelessWidget {
+  //score and totalScore variables to be passed into constructor
   final int score;
   final int totalScore;
 
+  //constructor with required score and totalScore to store quiz results
   const ResultsScreen({
     super.key,
     required this.score,
@@ -15,14 +17,17 @@ class ResultsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        //Container height and width to fit the entire screen 
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.deepPurpleAccent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            //resultMessage fucntion call to handle displaying result based on score
             resultMessage(score),
             const SizedBox(height: 20),
+            //Stack to display done icon on two circular containers
             Stack(
               children: [
                 Container(
@@ -81,8 +86,10 @@ class ResultsScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 50),
+            //satrs function to handle displaying stars based on score
             stars(score),
             const SizedBox(height: 50),
+            //Row to display the user's points
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -92,6 +99,7 @@ class ResultsScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 150),
+            //Button to replay quiz
             QuizButton(text: 'Play Again'),
           ],
         ),
@@ -100,6 +108,8 @@ class ResultsScreen extends StatelessWidget {
   }
 }
 
+
+//resultMessage function handling result message based on score
 Widget resultMessage(int score) {
   if (score <= 40) {
     return Text(
@@ -131,6 +141,7 @@ Widget resultMessage(int score) {
   }
 }
 
+//stars function handling the number of stars a user gets based on score
 Widget stars(int score) {
   if(score == 0){
     return Row(

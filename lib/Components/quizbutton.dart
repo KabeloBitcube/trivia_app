@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_app/Home/home.dart';
 
+//Re-usable quiz button that holds a text parameter to be display on the button
+//Currently only used to navigate back to home
 class QuizButton extends StatelessWidget {
   final String text;
   const QuizButton({super.key, required this.text});

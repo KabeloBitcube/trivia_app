@@ -15,20 +15,23 @@ class Questions extends StatefulWidget {
 
 class _QuestionsState extends State<Questions> {
 
-  //API integration
+  //API integration > variables to store API data and track user activity
   List<Map<String, dynamic>> questions = [];
   int currentIndex = 0;
   int score = 0;
   String? selectedAnswer;
   bool showNext = false;
-  final unescape = HtmlUnescape();
+  final unescape = HtmlUnescape(); //To convert html escape sequences from API to original characters
 
+
+//Call fetchQuiz
   @override
   void initState() {
     super.initState();
     fetchQuiz();
   }
 
+//fectQuiz function to handle API requests
   Future<void> fetchQuiz() async {
     final response = await http.get(
       Uri.parse(
@@ -37,15 +40,19 @@ class _QuestionsState extends State<Questions> {
       headers: {'Content-Type': 'application/json'},
     );
 
+    //Logging responses
     log('Response status: ${response.statusCode}');
     log('Response body: ${response.body}');
 
+
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
+      final data = jsonDecode(response.body); //Decode response body
 
+      //Checking that results are not null or empty
       if (data['results'] != null && data['results'].isNotEmpty) {
-        List<Map<String, dynamic>> loadedQuestions = [];
+        List<Map<String, dynamic>> loadedQuestions = []; //List to store results
 
+        //Convert data using html unescape
         for (var item in data['results']) {
           String questionText = unescape.convert(item['question']);
           String correctAnswer = unescape.convert(item['correct_answer']);
@@ -55,17 +62,21 @@ class _QuestionsState extends State<Questions> {
             ),
           );
 
+          //Add correct answer to options list and shuffle the options
           options.add(correctAnswer);
           options.shuffle();
 
+          //Add results from API to loadedQuestions list
           loadedQuestions.add({
             'question': questionText,
             'correct_answer': correctAnswer,
             'options': options,
           });
 
+          //Checks if widget is still in widget tree
           if (!mounted) return;
 
+          //Updating the state
           setState(() {
             questions = loadedQuestions;
             currentIndex = 0;
@@ -76,24 +87,30 @@ class _QuestionsState extends State<Questions> {
         }
       }
     } else {
+      //Logging failed API call with its status code
       log('Failed to load API. Response status: ${response.statusCode}');
     }
   }
 
-  void selectAnswer(String answer) {
-    if (selectedAnswer != null) return;
 
+  //selectAnswer function that handles the user's selection
+  void selectAnswer(String answer) {
+    if (selectedAnswer != null) return; //Prevent re-selection
+
+    //Checks if answer is correct and increments by 10 if true
     bool isCorrect = answer == questions[currentIndex]['correct_answer'];
     if (isCorrect) {
       score+=10;
     }
 
+    //Update state after user makes a selection
     setState(() {
       selectedAnswer = answer;
       showNext = true;
     });
   }
 
+  //getAnswerColor function to set button colour based on the answer
   Color getAnswerColor(String answer) {
     if (selectedAnswer == null) {
       return Colors.deepOrange;
@@ -108,6 +125,8 @@ class _QuestionsState extends State<Questions> {
     return Colors.deepOrange;
   }
 
+  //nextQuestion function to handle question index and navigation 
+  //to results when quiz is complete
   void nextQuestion() {
     if (currentIndex < questions.length - 1) {
       setState(() {
@@ -117,6 +136,7 @@ class _QuestionsState extends State<Questions> {
       });
     } else {
       //Navigate to final results
+      //Pass score and question length values to the results screen 
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -129,7 +149,8 @@ class _QuestionsState extends State<Questions> {
 
   @override
   Widget build(BuildContext context) {
-    //API intergration
+    //API intergration > displaying and manipulating data from API
+    //If questions are empty display a loading indicator
     if (questions.isEmpty) {
       return Scaffold(
         appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
@@ -142,10 +163,12 @@ class _QuestionsState extends State<Questions> {
       );
     }
 
+    //Variables to store and display the current question and answer options
     Map<String, dynamic> currentQuestion = questions[currentIndex];
     String questionText = currentQuestion['question'];
     List<String> options = currentQuestion['options'];
 
+    //List of options 
     List<Widget> answerWidgets = [];
 
     for (var answer in options) {
@@ -186,6 +209,8 @@ class _QuestionsState extends State<Questions> {
       );
     }
 
+    //Column to display quiz layout - question index, progress bar, 
+    //container with question, and the answerWidgets including next/finish button
     List<Widget> columnChildren = [
       Container(
         height: MediaQuery.of(context).size.height,
@@ -233,6 +258,7 @@ class _QuestionsState extends State<Questions> {
       ),
     ];
 
+    //Return the columnChildren list
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
       body: SingleChildScrollView(child: Column(children: columnChildren)),
@@ -240,6 +266,8 @@ class _QuestionsState extends State<Questions> {
   }
 }
 
+
+//progressBar function to increase question progress bar as user goes through more questions
 Widget progressBar(int index) {
   if (index == 0) {
     return Container(

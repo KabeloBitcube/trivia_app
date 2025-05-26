@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        //Container height and width to fit the entire screen 
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.deepPurpleAccent,
@@ -16,6 +17,8 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 20),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.5,
+              //Column displaying figma images in rows 
+              //Question mark images stacked 
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -79,6 +82,8 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
+            //Container with button that starts quiz
+            //Button stacked on container
             Padding(
               padding: const EdgeInsets.all(10),
               child: Stack(
@@ -138,6 +143,7 @@ class HomePage extends StatelessWidget {
                       ),
                       child: GestureDetector(
                         onTap: () {
+                          //Navigating to quiz
                           Navigator.push(
                             context,
                             MaterialPageRoute(
