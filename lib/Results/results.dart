@@ -88,7 +88,7 @@ class ResultsScreen extends StatelessWidget {
               children: [
                 Text('You Earned', style: TextStyle(fontSize: 20, color: Colors.white),),
                 const SizedBox(width: 5,),
-                Text('${score}0 pts', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),),
+                Text('$score pts', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),),
               ],
             ),
             const SizedBox(height: 150),
@@ -101,7 +101,7 @@ class ResultsScreen extends StatelessWidget {
 }
 
 Widget resultMessage(int score) {
-  if (score <= 4) {
+  if (score <= 40) {
     return Text(
       'You Can Do Better Next Time',
       style: TextStyle(
@@ -110,7 +110,7 @@ Widget resultMessage(int score) {
         color: Colors.white,
       ),
     );
-  } else if (score >= 4 && score <= 8) {
+  } else if (score >= 40 && score <= 80) {
     return Text(
       'Nice Work',
       style: TextStyle(
@@ -132,7 +132,20 @@ Widget resultMessage(int score) {
 }
 
 Widget stars(int score) {
-  if (score <= 4) {
+  if(score == 0){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(Icons.star,),
+        const SizedBox(width: 10),
+        Icon(Icons.star, size: 50),
+        const SizedBox(width: 10),
+        Icon(Icons.star),
+        const SizedBox(width: 10),
+      ],
+    );
+  }
+  if (score <= 40) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -145,7 +158,7 @@ Widget stars(int score) {
       ],
     );
   }
-  else if (score <= 8) {
+  else if (score >= 40 && score <= 80) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -158,7 +171,7 @@ Widget stars(int score) {
       ],
     );
   }
-  else if (score == 10) {
+  else if (score == 100) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

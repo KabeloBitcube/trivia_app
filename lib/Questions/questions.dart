@@ -90,7 +90,7 @@ class _QuestionsState extends State<Questions> {
 
     bool isCorrect = answer == questions[currentIndex]['correct_answer'];
     if (isCorrect) {
-      score++;
+      score+=10;
     }
 
     setState(() {
