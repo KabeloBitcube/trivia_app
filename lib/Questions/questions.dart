@@ -120,7 +120,8 @@ class _QuestionsState extends State<Questions> {
         selectedAnswer = null;
         showNext = false;
       });
-    } else {
+    } 
+    else {
       //Navigate to final results
       Navigator.push(
         context,
@@ -204,16 +205,7 @@ class _QuestionsState extends State<Questions> {
                     color: Colors.grey,
                   ),
                 ),
-                Positioned(
-                  child: Container(
-                    height: 10,
-                    width: 250,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.deepOrange,
-                    ),
-                  ),
-                ),
+                Positioned(child: progressBar(currentIndex)),
               ],
             ),
             const SizedBox(height: 50),
@@ -239,4 +231,116 @@ class _QuestionsState extends State<Questions> {
       body: SingleChildScrollView(child: Column(children: columnChildren)),
     );
   }
+}
+
+Widget progressBar(int index) {
+  if (index == 0) {
+    return Container(
+      height: 10,
+      width: 35,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 1) {
+    return Container(
+      height: 10,
+      width: 70,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 2) {
+    return Container(
+      height: 10,
+      width: 105,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 3) {
+    return Container(
+      height: 10,
+      width: 140,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 4) {
+    return Container(
+      height: 10,
+      width: 175,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 5) {
+    return Container(
+      height: 10,
+      width: 210,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 6) {
+    return Container(
+      height: 10,
+      width: 245,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 7) {
+    return Container(
+      height: 10,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 8) {
+    return Container(
+      height: 10,
+      width: 315,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 9) {
+    return Container(
+      height: 10,
+      width: 350,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  } else if (index == 10) {
+    return Container(
+      height: 10,
+      width: 350,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.deepOrange,
+      ),
+    );
+  }
+  
+  return Container(
+    height: 10,
+    width: 0,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.deepOrange,
+    ),
+  );
 }
