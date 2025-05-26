@@ -65,12 +65,12 @@ class _QuestionsState extends State<Questions> {
           options.shuffle();
 
           loadedQuestions.add({
-            'question' : questionText,
-            'correct_answer' : correctAnswer,
-            'options' : options
+            'question': questionText,
+            'correct_answer': correctAnswer,
+            'options': options,
           });
 
-          if(!mounted) return;
+          if (!mounted) return;
 
           setState(() {
             questions = loadedQuestions;
@@ -80,11 +80,49 @@ class _QuestionsState extends State<Questions> {
             showNext = false;
           });
         }
-
       }
-    }
-    else{
+    } else {
       log('Failed to load API. Response status: ${response.statusCode}');
+    }
+  }
+
+  void selectAnswer(String answer) {
+    if (selectedAnswer != null) return;
+
+    bool isCorrect = answer == questions[currentIndex]['correct_answer'];
+    if (isCorrect) {
+      score++;
+    }
+
+    setState(() {
+      selectedAnswer = answer;
+      showNext = true;
+    });
+  }
+
+  Color getAnswerColor(String answer) {
+    if (selectedAnswer == null) {
+      return Colors.deepOrange;
+    }
+    if (answer == questions[currentIndex]['correct_answer']) {
+      return Colors.lightBlue;
+    }
+    if (answer == selectedAnswer) {
+      return Colors.red;
+    }
+
+    return Colors.deepOrange;
+  }
+
+  void nextQuestion() {
+    if (currentIndex < questions.length - 1) {
+      setState(() {
+        currentIndex++;
+        selectedAnswer = null;
+        showNext = false;
+      });
+    } else {
+      //Navigate to final results
     }
   }
 
