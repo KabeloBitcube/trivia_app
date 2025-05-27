@@ -172,6 +172,7 @@ class _QuestionsState extends State<Questions> {
       answerWidgets.add(
         GestureDetector(
               onTap: () {
+                //Handles answer selection
                 selectAnswer(answer);
               },
               child: Padding(
@@ -180,7 +181,7 @@ class _QuestionsState extends State<Questions> {
                   height: 50,
                   width: 350,
                   decoration: BoxDecoration(
-                    color: getAnswerColor(answer),
+                    color: getAnswerColor(answer), //Handle container colors
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.white),
                     boxShadow: [
@@ -198,7 +199,7 @@ class _QuestionsState extends State<Questions> {
                     ],
                   ),
                   child: Center(
-                    child: Text(answer, style: TextStyle(color: Colors.white)),
+                    child: Text(answer, style: TextStyle(color: Colors.white)), //Display option from API
                   ),
                 ),
               ),
@@ -237,7 +238,7 @@ class _QuestionsState extends State<Questions> {
                     color: Colors.grey,
                   ),
                 ),
-                Positioned(child: progressBar(currentIndex)),
+                Positioned(child: progressBar(currentIndex)), //Question progress bar
               ],
             ),
             const SizedBox(height: 50),
@@ -246,7 +247,7 @@ class _QuestionsState extends State<Questions> {
             .fadeIn(duration: 800.ms)
             .slideX(begin: 0.2, duration: 1200.ms, curve: Curves.easeOut),
             const SizedBox(height: 50),
-            Column(children: answerWidgets),
+            Column(children: answerWidgets), //answerWidgets added to the list of column children
             const SizedBox(height: 50),
           ],
         ),
