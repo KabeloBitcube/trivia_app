@@ -14,24 +14,22 @@ class Questions extends StatefulWidget {
 }
 
 class _QuestionsState extends State<Questions> {
-
   //API integration > variables to store API data and track user activity
   List<Map<String, dynamic>> questions = [];
   int currentIndex = 0;
   int score = 0;
   String? selectedAnswer;
-  bool showNext = false;
-  final unescape = HtmlUnescape(); //To convert html escape sequences from API to original characters
+  final unescape =
+      HtmlUnescape(); //To convert html escape sequences from API to original characters
 
-
-//Call fetchQuiz
+  //Call fetchQuiz
   @override
   void initState() {
     super.initState();
     fetchQuiz();
   }
 
-//fectQuiz function to handle API requests
+  //fectQuiz function to handle API requests
   Future<void> fetchQuiz() async {
     final response = await http.get(
       Uri.parse(
@@ -43,7 +41,6 @@ class _QuestionsState extends State<Questions> {
     //Logging responses
     log('Response status: ${response.statusCode}');
     log('Response body: ${response.body}');
-
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body); //Decode response body
@@ -82,7 +79,6 @@ class _QuestionsState extends State<Questions> {
             currentIndex = 0;
             score = 0;
             selectedAnswer = null;
-            showNext = false;
           });
         }
       }
@@ -92,7 +88,6 @@ class _QuestionsState extends State<Questions> {
     }
   }
 
-
   //selectAnswer function that handles the user's selection
   void selectAnswer(String answer) {
     if (selectedAnswer != null) return; //Prevent re-selection
@@ -100,17 +95,38 @@ class _QuestionsState extends State<Questions> {
     //Checks if answer is correct and increments by 10 if true
     bool isCorrect = answer == questions[currentIndex]['correct_answer'];
     if (isCorrect) {
-      score+=10;
+      score += 10;
     }
 
     //Update state after user makes a selection
     setState(() {
       selectedAnswer = answer;
-      showNext = true;
+    });
+
+    //Automatically transitions to the next next question after selection
+    Future.delayed(const Duration(seconds: 2), () {
+      if (currentIndex < questions.length - 1) {
+        setState(() {
+          currentIndex++;
+          selectedAnswer = null;
+        });
+      } else {
+        //Navigate to final results
+        //Pass score and question length values to the results screen
+
+        //NB: Not sure how to solve context warning
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) =>
+                ResultsScreen(score: score, totalScore: questions.length),
+          ),
+        );
+      }
     });
   }
 
   //getAnswerColor function to set button colour based on the answer
+  //Set color to transparent when the user makes a selection
   Color getAnswerColor(String answer) {
     if (selectedAnswer == null) {
       return Colors.deepOrange;
@@ -122,30 +138,9 @@ class _QuestionsState extends State<Questions> {
       return Colors.red;
     }
 
-    return Colors.deepOrange;
+    return Colors.transparent;
   }
 
-  //nextQuestion function to handle question index and navigation 
-  //to results when quiz is complete
-  void nextQuestion() {
-    if (currentIndex < questions.length - 1) {
-      setState(() {
-        currentIndex++;
-        selectedAnswer = null;
-        showNext = false;
-      });
-    } else {
-      //Navigate to final results
-      //Pass score and question length values to the results screen 
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) =>
-              ResultsScreen(score: score, totalScore: questions.length),
-        ),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -168,9 +163,11 @@ class _QuestionsState extends State<Questions> {
     String questionText = currentQuestion['question'];
     List<String> options = currentQuestion['options'];
 
-    //List of options 
+    //Variable to store list of options
     List<Widget> answerWidgets = [];
 
+    //Iterate through API answer options
+    //Display options in a container
     for (var answer in options) {
       answerWidgets.add(
         GestureDetector(
@@ -209,8 +206,8 @@ class _QuestionsState extends State<Questions> {
       );
     }
 
-    //Column to display quiz layout - question index, progress bar, 
-    //container with question, and the answerWidgets including next/finish button
+    //Column to display quiz layout - question index, progress bar,
+    //container with question (re-usbale quiz container) and the answerWidgets
     List<Widget> columnChildren = [
       Container(
         height: MediaQuery.of(context).size.height,
@@ -245,14 +242,6 @@ class _QuestionsState extends State<Questions> {
             const SizedBox(height: 50),
             Column(children: answerWidgets),
             const SizedBox(height: 50),
-            ElevatedButton(
-              onPressed: () {
-                nextQuestion();
-              },
-              child: Text(
-                currentIndex >= questions.length - 1 ? 'Finish' : 'Next',
-              ),
-            ),
           ],
         ),
       ),
@@ -265,7 +254,6 @@ class _QuestionsState extends State<Questions> {
     );
   }
 }
-
 
 //progressBar function to increase question progress bar as user goes through more questions
 Widget progressBar(int index) {
