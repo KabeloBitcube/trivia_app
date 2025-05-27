@@ -127,18 +127,21 @@ class _QuestionsState extends State<Questions> {
   }
 
   //getAnswerColor function to set button colour based on the answer
-  //Set color to transparent when the user makes a selection
   Color getAnswerColor(String answer) {
     if (selectedAnswer == null) {
       return Colors.deepOrange;
     }
+    //Always shows correct answer after selection - it iterates through the API options so will always find the correct answer
+    //But show only correct answer if user selects correctly
     if (answer == questions[currentIndex]['correct_answer']) {
       return Colors.lightBlue;
     }
+    //Only appears after incorrect selection
     if (answer == selectedAnswer) {
       return Colors.red;
     }
 
+     //Set color of unselected options to transparent when the user makes a selection
     return Colors.transparent;
   }
 
