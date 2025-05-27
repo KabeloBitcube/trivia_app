@@ -8,86 +8,81 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        //Container height and width to fit the entire screen 
+        //Container height and width to fit the entire screen
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.deepPurpleAccent,
         child: Column(
           children: [
-            SizedBox(height: 20),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
-              //Column displaying figma images in rows 
-              //Question mark images stacked 
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset('assets/images/Object2.png', width: 100),
-                      SizedBox(width: 210),
-                      Image.asset('assets/images/Object4.png', width: 100),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                              'assets/images/Object8.png',
-                              width: 100,
-                            ),
-                            Image.asset(
-                              'assets/images/Object5.png',
-                              width: 100,
-                              height: 100,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Stack(
+            SizedBox(height: 40),
+            //Column displaying figma images in rows
+            //Question mark images stacked
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset('assets/images/Object2.png', width: 100),
+                    SizedBox(width: 210),
+                    Image.asset('assets/images/Object4.png', width: 100),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Stack(
                         children: [
-                          Image.asset('assets/images/Object10.png', width: 180),
+                          Image.asset('assets/images/Object8.png', width: 100),
                           Image.asset(
-                            'assets/images/Object7.png',
-                            width: 180,
-                            height: 190,
-                          ),
-                        ],
-                      ),
-                      Stack(
-                        children: [
-                          Image.asset('assets/images/Object9.png', width: 100),
-                          Image.asset(
-                            'assets/images/Object6.png',
+                            'assets/images/Object5.png',
                             width: 100,
                             height: 100,
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset('assets/images/Object3.png', width: 100),
-                      SizedBox(width: 200),
-                      Image.asset('assets/images/Object1.png', width: 100),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                    Stack(
+                      children: [
+                        Image.asset('assets/images/Object10.png', width: 180),
+                        Image.asset(
+                          'assets/images/Object7.png',
+                          width: 180,
+                          height: 190,
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        Image.asset('assets/images/Object9.png', width: 100),
+                        Image.asset(
+                          'assets/images/Object6.png',
+                          width: 100,
+                          height: 100,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset('assets/images/Object3.png', width: 100),
+                    SizedBox(width: 200),
+                    Image.asset('assets/images/Object1.png', width: 100),
+                  ],
+                ),
+              ],
             ),
+
             const SizedBox(height: 10),
             //Container with button that starts quiz
             //Button stacked on container
             Padding(
               padding: const EdgeInsets.all(10),
               child: Stack(
-                clipBehavior: Clip.none,
+                clipBehavior: Clip.none, //So that the button is not clipped at the bottom
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height * 0.3,
@@ -97,10 +92,15 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color.fromARGB(255, 31, 30, 30).withValues(alpha: 0.5),
+                          color: const Color.fromARGB(
+                            255,
+                            31,
+                            30,
+                            30,
+                          ).withValues(alpha: 0.5),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: Offset(0, 3), 
+                          offset: Offset(0, 3),
                         ),
                       ],
                     ),
