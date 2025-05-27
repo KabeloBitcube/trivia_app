@@ -205,7 +205,7 @@ class _QuestionsState extends State<Questions> {
             )
             .animate()
             .fadeIn(duration: 800.ms)
-            .slideX(begin: 0.2, duration: 1200.ms, curve: Curves.easeOut),
+            .slideX(begin: 0.2, duration: 1200.ms, curve: Curves.easeOut), //Animated fade in from the right for the quiz options
       );
     }
 
@@ -241,6 +241,7 @@ class _QuestionsState extends State<Questions> {
               ],
             ),
             const SizedBox(height: 50),
+            //Animated fade in from the right for the quiz container
             QuizContainer(quiz: questionText).animate()
             .fadeIn(duration: 800.ms)
             .slideX(begin: 0.2, duration: 1200.ms, curve: Curves.easeOut),
