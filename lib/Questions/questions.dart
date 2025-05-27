@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:html_unescape/html_unescape_small.dart';
 import 'package:trivia_app/Components/quizcontainer.dart';
 import 'package:http/http.dart' as http;
@@ -141,7 +142,6 @@ class _QuestionsState extends State<Questions> {
     return Colors.transparent;
   }
 
-
   @override
   Widget build(BuildContext context) {
     //API intergration > displaying and manipulating data from API
@@ -171,38 +171,41 @@ class _QuestionsState extends State<Questions> {
     for (var answer in options) {
       answerWidgets.add(
         GestureDetector(
-          onTap: () {
-            selectAnswer(answer);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 50,
-              width: 350,
-              decoration: BoxDecoration(
-                color: getAnswerColor(answer),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.white),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color.fromARGB(
-                      255,
-                      24,
-                      24,
-                      24,
-                    ).withValues(alpha: 0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
+              onTap: () {
+                selectAnswer(answer);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 50,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    color: getAnswerColor(answer),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.white),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color.fromARGB(
+                          255,
+                          24,
+                          24,
+                          24,
+                        ).withValues(alpha: 0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                   ),
-                ],
+                  child: Center(
+                    child: Text(answer, style: TextStyle(color: Colors.white)),
+                  ),
+                ),
               ),
-              child: Center(
-                child: Text(answer, style: TextStyle(color: Colors.white)),
-              ),
-            ),
-          ),
-        ),
+            )
+            .animate()
+            .fadeIn(duration: 800.ms)
+            .slideX(begin: 0.2, duration: 1200.ms, curve: Curves.easeOut),
       );
     }
 
@@ -238,13 +241,15 @@ class _QuestionsState extends State<Questions> {
               ],
             ),
             const SizedBox(height: 50),
-            QuizContainer(quiz: questionText),
+            QuizContainer(quiz: questionText).animate()
+            .fadeIn(duration: 800.ms)
+            .slideX(begin: 0.2, duration: 1200.ms, curve: Curves.easeOut),
             const SizedBox(height: 50),
             Column(children: answerWidgets),
             const SizedBox(height: 50),
           ],
         ),
-      ),
+      )
     ];
 
     //Return the columnChildren list
