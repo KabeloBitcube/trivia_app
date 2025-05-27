@@ -26,7 +26,7 @@ class ResultsScreen extends StatelessWidget {
             Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //resultMessage fucntion call to handle displaying result based on score
+                    //resultMessage function call to handle displaying result based on score
                     resultMessage(score),
                     const SizedBox(height: 20),
                     //Stack to display done icon on two circular containers
