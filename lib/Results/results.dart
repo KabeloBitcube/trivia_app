@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:trivia_app/Components/quizbutton.dart';
 
-class ResultsScreen extends StatelessWidget {
+class ResultsScreen1 extends StatelessWidget {
   //score and totalScore variables to be passed into constructor
   final int score;
   final int totalScore;
 
   //constructor with required score and totalScore to store quiz results
-  const ResultsScreen({
+  const ResultsScreen1({
     super.key,
     required this.score,
     required this.totalScore,
@@ -17,11 +17,11 @@ class ResultsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         //Container height and width to fit the entire screen
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.deepPurpleAccent,
+        // color: Colors.deepPurpleAccent,
         child:
             Column(
                   mainAxisAlignment: MainAxisAlignment.center,

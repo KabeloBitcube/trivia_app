@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trivia_app/Questions/questions_1.dart';
+import 'package:trivia_app/Questions/questions.dart';
 import 'package:trivia_app/flavors.dart';
 
 class Trivia1HomePage extends StatelessWidget {
@@ -8,11 +8,11 @@ class Trivia1HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         //Container height and width to fit the entire screen
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.deepPurpleAccent,
+        // color: Colors.deepPurpleAccent,
         child: Column(
           children: [
             SizedBox(height: 40),

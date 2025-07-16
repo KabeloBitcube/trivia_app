@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:trivia_app/Home/home_1.dart';
-import 'package:trivia_app/Home/home_2.dart';
+import 'package:trivia_app/Home/home.dart';
 
 import 'flavors.dart';
 
@@ -13,11 +12,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: F.title,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: _flavorBanner(
-        child: F.name == 'trivia1' ? Trivia1HomePage() : Trivia2HomePage(),
-        show: kDebugMode,
-      ),
+      theme: F.name == "trivia1"
+          ? ThemeData(scaffoldBackgroundColor: Colors.purple)
+          : ThemeData(scaffoldBackgroundColor: Colors.blue),
+      home: _flavorBanner(child: Trivia1HomePage(), show: kDebugMode),
     );
   }
 
