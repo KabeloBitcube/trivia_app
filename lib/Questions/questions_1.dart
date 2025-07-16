@@ -7,14 +7,14 @@ import 'package:trivia_app/Components/quizcontainer.dart';
 import 'package:http/http.dart' as http;
 import 'package:trivia_app/Results/results.dart';
 
-class Questions extends StatefulWidget {
-  const Questions({super.key});
+class Questions1 extends StatefulWidget {
+  const Questions1({super.key});
 
   @override
-  State<Questions> createState() => _QuestionsState();
+  State<Questions1> createState() => _QuestionsState1();
 }
 
-class _QuestionsState extends State<Questions> {
+class _QuestionsState1 extends State<Questions1> {
   //API integration > variables to store API data and track user activity
   List<Map<String, dynamic>> questions = [];
   int currentIndex = 0;

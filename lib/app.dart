@@ -15,7 +15,7 @@ class App extends StatelessWidget {
       title: F.title,
       theme: ThemeData(primarySwatch: Colors.blue),
       home: _flavorBanner(
-        child: F.name == Flavor.trivia1.toString() ? Trivia1HomePage() : Trivia2HomePage(),
+        child: F.name == 'trivia1' ? Trivia1HomePage() : Trivia2HomePage(),
         show: kDebugMode,
       ),
     );

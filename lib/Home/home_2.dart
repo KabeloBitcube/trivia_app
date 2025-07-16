@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trivia_app/Questions/questions.dart';
+import 'package:trivia_app/Questions/questions_2.dart';
 import 'package:trivia_app/flavors.dart';
 
 class Trivia2HomePage extends StatelessWidget {
@@ -148,7 +148,7 @@ class Trivia2HomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Questions(),
+                              builder: (context) => Questions2(),
                             ),
                           );
                         },
