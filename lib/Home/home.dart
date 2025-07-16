@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_app/Questions/questions.dart';
+import 'package:trivia_app/flavors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -115,8 +116,8 @@ class HomePage extends StatelessWidget {
                             fontSize: 23,
                           ),
                         ),
-                        const Text(
-                          'QUIZMASTER',
+                        Text(
+                          F.title,
                           style: TextStyle(
                             color: Color.fromARGB(255, 56, 1, 66),
                             fontWeight: FontWeight.bold,

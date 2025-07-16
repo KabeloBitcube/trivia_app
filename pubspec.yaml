@@ -21,7 +21,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_flavorizr: ^2.4.1
-
   flutter_lints: ^5.0.0
 
 
@@ -47,15 +46,15 @@ flavorizr:
       flavorDimensions: "flavor-type"
 
   flavors:
-    apple:
+    trivia1:
       app:
-        name: "Trvia App V1"
+        name: "Trivia App V1"
 
       android:
         applicationId: "com.example.trivia1"  
-    banana:
+    trivia2:
       app:
-        name: "Trvia App V2"
+        name: "Trivia App V2"
     
       android:
         applicationId: "com.example.trivia2"

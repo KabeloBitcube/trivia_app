@@ -6,12 +6,12 @@ android.apply {
     flavorDimensions("flavor-type")
 
     productFlavors {
-        create("apple") {
+        create("trivia1") {
             dimension = "flavor-type"
             applicationId = "com.example.trivia1"
             resValue(type = "string", name = "app_name", value = "Trvia App V1")
         }
-        create("banana") {
+        create("trivia2") {
             dimension = "flavor-type"
             applicationId = "com.example.trivia2"
             resValue(type = "string", name = "app_name", value = "Trvia App V2")
