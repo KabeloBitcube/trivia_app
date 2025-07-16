@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trivia_app/Questions/questions.dart';
 import 'package:trivia_app/flavors.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Trivia1HomePage extends StatelessWidget {
+  const Trivia1HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

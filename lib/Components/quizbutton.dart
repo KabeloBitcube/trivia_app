@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trivia_app/Home/home.dart';
+import 'package:trivia_app/Home/home_1.dart';
 
 //Re-usable quiz button that holds a text parameter to be display on the button
 //Currently only used to navigate back to home
@@ -13,7 +13,7 @@ class QuizButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (BuildContext context) => HomePage()),
+          MaterialPageRoute(builder: (BuildContext context) => Trivia1HomePage()),
         );
       },
       child: Container(
