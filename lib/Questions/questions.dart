@@ -116,6 +116,7 @@ class _QuestionsState extends State<Questions> {
         //Pass score and question length values to the results screen
 
         //NB: Not sure how to solve context warning
+        // ignore: use_build_context_synchronously
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) =>
