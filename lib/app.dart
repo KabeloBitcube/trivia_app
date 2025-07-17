@@ -12,7 +12,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: F.title,
-      theme: F.name == "trivia1"
+      theme: F.name == Flavor.trivia1.name
           ? ThemeData(scaffoldBackgroundColor: Colors.purple)
           : ThemeData(scaffoldBackgroundColor: Colors.blue),
       home: _flavorBanner(child: Trivia1HomePage(), show: kDebugMode),

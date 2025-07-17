@@ -1,4 +1,6 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trivia_app/Questions/questions.dart';
 import 'package:trivia_app/flavors.dart';
 
@@ -82,81 +84,85 @@ class Trivia1HomePage extends StatelessWidget {
             //Button stacked on container
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Stack(
-                clipBehavior: Clip.none, //So that the button is not clipped at the bottom
-                children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color.fromARGB(
-                            255,
-                            31,
-                            30,
-                            30,
-                          ).withValues(alpha: 0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Press play to start',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 56, 1, 66),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 23,
-                          ),
-                        ),
-                        Text(
-                          F.title,
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 56, 1, 66),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 23,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        const Text(
-                          'Answer questions correctly to earn points',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    top: 235,
-                    left: 130,
-                    child: Container(
-                      height: 80,
-                      width: 80,
+              child: AvatarGlow(
+                glowColor: Colors.grey,
+                child: Stack(
+                  clipBehavior: Clip.none, //So that the button is not clipped at the bottom
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       decoration: BoxDecoration(
-                        color: Colors.deepOrange,
-                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(
+                              255,
+                              31,
+                              30,
+                              30,
+                            ).withValues(alpha: 0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
                       ),
-                      child: GestureDetector(
-                        onTap: () {
-                          //Navigating to quiz
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Questions1(),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Press play to start',
+                            style: GoogleFonts.pressStart2p(
+                              color: F.name == Flavor.trivia1.name ? Color.fromARGB(255, 56, 1, 66) : Color.fromARGB(255, 204, 142, 28),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
                             ),
-                          );
-                        },
-                        child: Image.asset('assets/images/Play.png'),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(
+                            F.title,
+                            style: GoogleFonts.pressStart2p(
+                              color: F.name == Flavor.trivia1.name ? Color.fromARGB(255, 56, 1, 66) : Color.fromARGB(255, 204, 142, 28),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          const Text(
+                            'Answer questions correctly to earn points',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 235,
+                      left: 130,
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.deepOrange,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            //Navigating to quiz
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Questions1(),
+                              ),
+                            );
+                          },
+                          child: Image.asset('assets/images/Play.png'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 20),

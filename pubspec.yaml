@@ -16,6 +16,8 @@ dependencies:
   http: ^1.0.0
   html_unescape: ^2.0.0
   flutter_animate: ^4.5.2
+  avatar_glow: ^3.0.1
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
