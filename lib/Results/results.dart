@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:trivia_app/Components/quizbutton.dart';
+import 'package:confetti/confetti.dart';
 
-class ResultsScreen1 extends StatelessWidget {
+class ResultsScreen1 extends StatefulWidget {
   //score and totalScore variables to be passed into constructor
   final int score;
   final int totalScore;
+  final ConfettiController controller;
 
   //constructor with required score and totalScore to store quiz results
   const ResultsScreen1({
     super.key,
     required this.score,
     required this.totalScore,
+    required this.controller
   });
+
+  @override
+  State<ResultsScreen1> createState() => _ResultsScreen1State();
+}
+
+class _ResultsScreen1State extends State<ResultsScreen1> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +36,9 @@ class ResultsScreen1 extends StatelessWidget {
             Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    ConfettiWidget(confettiController: widget.controller),
                     //resultMessage function call to handle displaying result based on score
-                    resultMessage(score),
+                    resultMessage(widget.score),
                     const SizedBox(height: 20),
                     //Stack to display done icon on two circular containers
                     Stack(
@@ -93,7 +104,7 @@ class ResultsScreen1 extends StatelessWidget {
                     ),
                     const SizedBox(height: 50),
                     //satrs function to handle displaying stars based on score
-                    stars(score),
+                    stars(widget.score),
                     const SizedBox(height: 50),
                     //Row to display the user's points
                     Row(
@@ -105,7 +116,7 @@ class ResultsScreen1 extends StatelessWidget {
                         ),
                         const SizedBox(width: 5),
                         Text(
-                          '$score pts',
+                          '${widget.score} pts',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,

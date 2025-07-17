@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:html_unescape/html_unescape_small.dart';
@@ -29,6 +30,14 @@ class _QuestionsState1 extends State<Questions1> {
   void initState() {
     super.initState();
     fetchQuiz();
+  }
+
+  final controller = ConfettiController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
   }
 
   //fectQuiz function to handle API requests
@@ -121,9 +130,11 @@ class _QuestionsState1 extends State<Questions1> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) =>
-                ResultsScreen1(score: score, totalScore: questions.length),
+                ResultsScreen1(score: score, totalScore: questions.length, controller: controller,),
           ),
         );
+
+        controller.play();
       }
     });
   }
