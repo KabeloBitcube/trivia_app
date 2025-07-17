@@ -13,7 +13,7 @@ class QuizButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (BuildContext context) => HomePage()),
+          MaterialPageRoute(builder: (BuildContext context) => Trivia1HomePage()),
         );
       },
       child: Container(

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_app/Questions/questions.dart';
+import 'package:trivia_app/flavors.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Trivia1HomePage extends StatelessWidget {
+  const Trivia1HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         //Container height and width to fit the entire screen
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.deepPurpleAccent,
+        // color: Colors.deepPurpleAccent,
         child: Column(
           children: [
             SizedBox(height: 40),
@@ -115,8 +116,8 @@ class HomePage extends StatelessWidget {
                             fontSize: 23,
                           ),
                         ),
-                        const Text(
-                          'QUIZMASTER',
+                        Text(
+                          F.title,
                           style: TextStyle(
                             color: Color.fromARGB(255, 56, 1, 66),
                             fontWeight: FontWeight.bold,
@@ -147,7 +148,7 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Questions(),
+                              builder: (context) => Questions1(),
                             ),
                           );
                         },

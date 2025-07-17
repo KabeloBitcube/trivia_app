@@ -1,0 +1,71 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Trivia1 Debug",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "Trivia1"
+            ],
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "Trivia1 Profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "Trivia1"
+            ],
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "Trivia1 Release",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "Trivia1"
+            ],
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "Trivia2 Debug",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "Trivia2"
+            ],
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "Trivia2 Profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "Trivia2"
+            ],
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "Trivia2 Release",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "Trivia2"
+            ],
+            "program": "lib/main.dart"
+        }
+    ]
+}

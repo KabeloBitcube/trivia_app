@@ -6,15 +6,16 @@ import 'package:html_unescape/html_unescape_small.dart';
 import 'package:trivia_app/Components/quizcontainer.dart';
 import 'package:http/http.dart' as http;
 import 'package:trivia_app/Results/results.dart';
+import 'package:trivia_app/flavors.dart';
 
-class Questions extends StatefulWidget {
-  const Questions({super.key});
+class Questions1 extends StatefulWidget {
+  const Questions1({super.key});
 
   @override
-  State<Questions> createState() => _QuestionsState();
+  State<Questions1> createState() => _QuestionsState1();
 }
 
-class _QuestionsState extends State<Questions> {
+class _QuestionsState1 extends State<Questions1> {
   //API integration > variables to store API data and track user activity
   List<Map<String, dynamic>> questions = [];
   int currentIndex = 0;
@@ -116,10 +117,11 @@ class _QuestionsState extends State<Questions> {
         //Pass score and question length values to the results screen
 
         //NB: Not sure how to solve context warning
+        // ignore: use_build_context_synchronously
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) =>
-                ResultsScreen(score: score, totalScore: questions.length),
+                ResultsScreen1(score: score, totalScore: questions.length),
           ),
         );
       }
@@ -151,11 +153,11 @@ class _QuestionsState extends State<Questions> {
     //If questions are empty display a loading indicator
     if (questions.isEmpty) {
       return Scaffold(
-        appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
+        appBar: AppBar(backgroundColor: F.name == "trivia1" ?Colors.purple : Colors.blue,),
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: Colors.deepPurpleAccent,
+          color: F.name == "trivia1" ?Colors.purple : Colors.blue,
           child: Center(child: CircularProgressIndicator(color: Colors.white)),
         ),
       );
@@ -216,10 +218,9 @@ class _QuestionsState extends State<Questions> {
     //Column to display quiz layout - question index, progress bar,
     //container with question (re-usbale quiz container) and the answerWidgets
     List<Widget> columnChildren = [
-      Container(
+      SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.deepPurpleAccent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -259,7 +260,7 @@ class _QuestionsState extends State<Questions> {
 
     //Return the columnChildren list
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
+      appBar: AppBar(backgroundColor: F.name == "trivia1" ?Colors.purple : Colors.blue,),
       body: SingleChildScrollView(child: Column(children: columnChildren)),
     );
   }

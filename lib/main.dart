@@ -1,25 +1,15 @@
+// ignore: unused_import
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:trivia_app/Home/home.dart';
+import 'package:flutter/services.dart';
+
+import 'app.dart';
+import 'flavors.dart';
 
 void main() {
-  runApp(const MyApp());
+  F.appFlavor = Flavor.values.firstWhere(
+    (element) => element.name == appFlavor,
+  );
+
+  runApp(const App());
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      //Root screen 
-      home: const HomePage(),
-    );
-  }
-}
-
