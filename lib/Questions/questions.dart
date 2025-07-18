@@ -7,7 +7,6 @@ import 'package:html_unescape/html_unescape_small.dart';
 import 'package:trivia_app/Components/quizcontainer.dart';
 import 'package:http/http.dart' as http;
 import 'package:trivia_app/Results/results.dart';
-import 'package:trivia_app/flavors.dart';
 
 class Questions1 extends StatefulWidget {
   const Questions1({super.key});
@@ -142,12 +141,12 @@ class _QuestionsState1 extends State<Questions1> {
   //getAnswerColor function to set button colour based on the answer
   Color getAnswerColor(String answer) {
     if (selectedAnswer == null) {
-      return Colors.deepOrange;
+      return Theme.of(context).primaryColor;
     }
     //Always shows correct answer after selection - it iterates through the API options so will always find the correct answer
     //But show only correct answer if user selects correctly
     if (answer == questions[currentIndex]['correct_answer']) {
-      return Colors.lightBlue;
+      return Colors.green;
     }
     //Only appears after incorrect selection
     if (answer == selectedAnswer) {
@@ -164,11 +163,11 @@ class _QuestionsState1 extends State<Questions1> {
     //If questions are empty display a loading indicator
     if (questions.isEmpty) {
       return Scaffold(
-        appBar: AppBar(backgroundColor: F.name == "trivia1" ?Colors.purple : Colors.blue,),
+        appBar: AppBar(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: F.name == "trivia1" ?Colors.purple : Colors.blue,
+          color:Theme.of(context).scaffoldBackgroundColor,
           child: Center(child: CircularProgressIndicator(color: Colors.white)),
         ),
       );
@@ -208,8 +207,8 @@ class _QuestionsState1 extends State<Questions1> {
                           24,
                           24,
                         ).withValues(alpha: 0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
+                        spreadRadius: 2,
+                        blurRadius: 10,
                         offset: Offset(0, 3),
                       ),
                     ],
@@ -253,7 +252,7 @@ class _QuestionsState1 extends State<Questions1> {
                     color: Colors.grey,
                   ),
                 ),
-                Positioned(child: progressBar(currentIndex)), //Question progress bar
+                Positioned(child: progressBar(currentIndex, context)), //Question progress bar
               ],
             ),
             const SizedBox(height: 50),
@@ -271,21 +270,21 @@ class _QuestionsState1 extends State<Questions1> {
 
     //Return the columnChildren list
     return Scaffold(
-      appBar: AppBar(backgroundColor: F.name == "trivia1" ?Colors.purple : Colors.blue,),
+      appBar: AppBar(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
       body: SingleChildScrollView(child: Column(children: columnChildren)),
     );
   }
 }
 
 //progressBar function to increase question progress bar as user goes through more questions
-Widget progressBar(int index) {
+Widget progressBar(int index, BuildContext context) {
   if (index == 0) {
     return Container(
       height: 10,
       width: 35,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 1) {
@@ -294,7 +293,7 @@ Widget progressBar(int index) {
       width: 70,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 2) {
@@ -303,7 +302,7 @@ Widget progressBar(int index) {
       width: 105,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 3) {
@@ -312,7 +311,7 @@ Widget progressBar(int index) {
       width: 140,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 4) {
@@ -321,7 +320,7 @@ Widget progressBar(int index) {
       width: 175,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 5) {
@@ -330,7 +329,7 @@ Widget progressBar(int index) {
       width: 210,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 6) {
@@ -339,7 +338,7 @@ Widget progressBar(int index) {
       width: 245,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 7) {
@@ -348,7 +347,7 @@ Widget progressBar(int index) {
       width: 280,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 8) {
@@ -357,7 +356,7 @@ Widget progressBar(int index) {
       width: 315,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 9) {
@@ -366,7 +365,7 @@ Widget progressBar(int index) {
       width: 350,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   } else if (index == 10) {
@@ -375,7 +374,7 @@ Widget progressBar(int index) {
       width: 350,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   }
@@ -385,7 +384,7 @@ Widget progressBar(int index) {
     width: 0,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      color: Colors.deepOrange,
+      color: Theme.of(context).primaryColor,
     ),
   );
 }

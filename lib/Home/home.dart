@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trivia_app/Questions/questions.dart';
 import 'package:trivia_app/flavors.dart';
 
-class Trivia1HomePage extends StatelessWidget {
-  const Trivia1HomePage({super.key});
+class TriviaHomePage extends StatelessWidget {
+  const TriviaHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +115,7 @@ class Trivia1HomePage extends StatelessWidget {
                           Text(
                             'Press play to start',
                             style: GoogleFonts.pressStart2p(
-                              color: F.name == Flavor.trivia1.name ? Color.fromARGB(255, 56, 1, 66) : Color.fromARGB(255, 204, 142, 28),
+                              color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                             ),
@@ -124,7 +124,7 @@ class Trivia1HomePage extends StatelessWidget {
                           Text(
                             F.title,
                             style: GoogleFonts.pressStart2p(
-                              color: F.name == Flavor.trivia1.name ? Color.fromARGB(255, 56, 1, 66) : Color.fromARGB(255, 204, 142, 28),
+                              color:Theme.of(context).primaryColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 10,
                             ),
@@ -144,7 +144,7 @@ class Trivia1HomePage extends StatelessWidget {
                         height: 80,
                         width: 80,
                         decoration: BoxDecoration(
-                          color: Colors.deepOrange,
+                          color: Theme.of(context).primaryColor,
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: GestureDetector(

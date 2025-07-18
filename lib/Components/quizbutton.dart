@@ -13,21 +13,21 @@ class QuizButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (BuildContext context) => Trivia1HomePage()),
+          MaterialPageRoute(builder: (BuildContext context) => TriviaHomePage()),
         );
       },
       child: Container(
         height: 50,
         width: 350,
         decoration: BoxDecoration(
-          color: Colors.deepOrange,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.white),
           boxShadow: [
             BoxShadow(
               color: const Color.fromARGB(255, 24, 24, 24).withValues(alpha: 0.5),
-              spreadRadius: 3,
-              blurRadius: 7,
+              spreadRadius: 2,
+              blurRadius: 10,
               offset: Offset(0, 3), 
             ),
           ],

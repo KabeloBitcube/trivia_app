@@ -21,7 +21,7 @@ class QuizContainer extends StatelessWidget {
           child: Text(
             quiz,
             style: TextStyle(
-              color: Color.fromARGB(255, 56, 1, 66),
+              color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
               fontSize: 23,
             ),
