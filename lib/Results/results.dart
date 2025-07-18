@@ -47,7 +47,7 @@ class _ResultsScreen1State extends State<ResultsScreen1> {
                           height: MediaQuery.of(context).size.height * 0.11,
                           width: MediaQuery.of(context).size.width * 0.25,
                           decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
+                            color: Theme.of(context).scaffoldBackgroundColor,
                             borderRadius: BorderRadius.circular(100),
                             boxShadow: [
                               BoxShadow(
@@ -71,7 +71,7 @@ class _ResultsScreen1State extends State<ResultsScreen1> {
                             height: MediaQuery.of(context).size.height * 0.07,
                             width: MediaQuery.of(context).size.width * 0.15,
                             decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).scaffoldBackgroundColor,
                               borderRadius: BorderRadius.circular(100),
                               boxShadow: [
                                 BoxShadow(
