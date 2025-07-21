@@ -153,7 +153,7 @@ class TriviaHomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Questions1(),
+                                builder: (context) => Questions(),
                               ),
                             );
                           },
