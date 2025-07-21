@@ -3,14 +3,14 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:trivia_app/Components/quizbutton.dart';
 import 'package:confetti/confetti.dart';
 
-class ResultsScreen1 extends StatefulWidget {
+class ResultsScreen extends StatefulWidget {
   //score and totalScore variables to be passed into constructor
   final int score;
   final int totalScore;
   final ConfettiController controller;
 
   //constructor with required score and totalScore to store quiz results
-  const ResultsScreen1({
+  const ResultsScreen({
     super.key,
     required this.score,
     required this.totalScore,
@@ -18,10 +18,10 @@ class ResultsScreen1 extends StatefulWidget {
   });
 
   @override
-  State<ResultsScreen1> createState() => _ResultsScreen1State();
+  State<ResultsScreen> createState() => _ResultsScreenState();
 }
 
-class _ResultsScreen1State extends State<ResultsScreen1> {
+class _ResultsScreenState extends State<ResultsScreen> {
 
 
   @override

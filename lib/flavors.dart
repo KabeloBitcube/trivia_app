@@ -1,6 +1,7 @@
 enum Flavor {
   trivia1,
   trivia2,
+  trivia3,
 }
 
 class F {
@@ -14,6 +15,8 @@ class F {
         return 'Trivia App V1';
       case Flavor.trivia2:
         return 'Trivia App V2';
+      case Flavor.trivia3:
+        return 'Trivia App V3';
     }
   }
 

@@ -129,7 +129,7 @@ class _QuestionsState1 extends State<Questions1> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) =>
-                ResultsScreen1(score: score, totalScore: questions.length, controller: controller,),
+                ResultsScreen(score: score, totalScore: questions.length, controller: controller,),
           ),
         );
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trivia_app/Home/home.dart';
 import 'package:trivia_app/Themes/trivia1_theme.dart';
 import 'package:trivia_app/Themes/trivia2_theme.dart';
+import 'package:trivia_app/Themes/trivia3_theme.dart';
 
 import 'flavors.dart';
 
@@ -14,7 +15,11 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: F.title,
-      theme: F.name == Flavor.trivia1.name ? Trivia1Theme.theme : Trivia2Theme.theme,
+      theme: (F.name == Flavor.trivia1.name)
+          ? Trivia1Theme.theme
+          : (F.name == Flavor.trivia2.name)
+          ? Trivia2Theme.theme
+          : Trivia3Theme.theme,
       home: _flavorBanner(child: TriviaHomePage(), show: kDebugMode),
     );
   }

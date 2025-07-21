@@ -9,12 +9,17 @@ android.apply {
         create("trivia1") {
             dimension = "flavor-type"
             applicationId = "com.example.trivia1"
-            resValue(type = "string", name = "app_name", value = "Trvia App V1")
+            resValue(type = "string", name = "app_name", value = "Trivia App V1")
         }
         create("trivia2") {
             dimension = "flavor-type"
             applicationId = "com.example.trivia2"
-            resValue(type = "string", name = "app_name", value = "Trvia App V2")
+            resValue(type = "string", name = "app_name", value = "Trivia App V2")
+        }
+        create("trivia3") {
+            dimension = "flavor-type"
+            applicationId = "com.example.trivia3"
+            resValue(type = "string", name = "app_name", value = "Trivia App V3")
         }
     }
 }

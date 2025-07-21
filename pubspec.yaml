@@ -61,3 +61,9 @@ flavorizr:
     
       android:
         applicationId: "com.example.trivia2"
+    trivia3:
+      app:
+        name: "Trivia App V3"
+    
+      android:
+        applicationId: "com.example.trivia3"
