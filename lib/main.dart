@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'app.dart';
 import 'flavors.dart';
 
-//Trivia App - Flutter flavours 
+//Trivia App - Flutter flavours final version
 
 void main() {
   F.appFlavor = Flavor.values.firstWhere(
